@@ -1,0 +1,44 @@
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    align-items: center;
+    background-color: beige;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+}
+.container2 {
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    grid-template-rows: repeat(10, 30px);
+}
+.sqr{ 
+    padding: 10px;
+    border: 3px solid black;
+}
+
+.notHit{
+    background-color: #777777;
+}
+
+.shipNotHit {
+    background-color: blue;
+}
+
+.hitNoShip {
+    background: #9D0707;
+    background: -moz-radial-gradient(center, #9D0707 0%, #777777 42%, #777777 100%);
+    background: -webkit-radial-gradient(center, #9D0707 0%, #777777 42%, #777777 100%);
+    background: radial-gradient(ellipse at center, #9D0707 0%, #777777 42%, #777777 100%);
+}
+
+.hitShip {
+    background: #A40000;
+    background: -moz-radial-gradient(center, #A40000 0%, #2168CB 52%, #144E75 100%);
+    background: -webkit-radial-gradient(center, #A40000 0%, #2168CB 52%, #144E75 100%);
+    background: radial-gradient(ellipse at center, #A40000 0%, #2168CB 52%, #144E75 100%);
+}
