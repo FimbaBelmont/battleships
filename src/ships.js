@@ -22,4 +22,4 @@ function Ship (coordinates) {return {
         }
     }
 }}
-module.exports = Ship
+export { Ship }

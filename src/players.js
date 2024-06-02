@@ -1,5 +1,4 @@
-const gameBoard = require("./gameBoard.js");
-
+import { gameBoard } from "./gameBoard"
 function Player() { return {
     //Each player receives 1x5
     //                     2x4
@@ -8,8 +7,11 @@ function Player() { return {
 
     shipsToPlace : [5,4,4,3,3,3,2,2,2,2],
     board : gameBoard(),
+    turn : false,
+    takenTurns : [],
+    possibleTurns : [],
 }};
 
 
 
-module.exports = Player
+export { Player }

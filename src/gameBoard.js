@@ -1,4 +1,4 @@
-const Ship = require("./ships.js")
+import { Ship } from "./ships";
 function gameBoard(){return {
     boardMap : [[0,0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0,0],
@@ -15,14 +15,16 @@ function gameBoard(){return {
     placeShip(coordinates){
         //[[0,0],[0,1]] [[column, row]]
         this.shipsInfo.push(Ship(coordinates));
-        for (x in coordinates){
-            this.boardMap[coordinates[x][0]][coordinates[x][1]] = 1;
+        for (let x of coordinates){
+            this.boardMap[x[0]][x[1]] = 1;
         }
         },
     receiveAttack(coord){
         // console.log(this.boardMap[coord[0]][coord[1]]);
+        let result = 0;
         if(this.boardMap[coord[0]][coord[1]] === 0){
             this.boardMap[coord[0]][coord[1]] = 2;
+            result = 2
         }
         else if(this.boardMap[coord[0]][coord[1]] === 1){
             this.shipsInfo.forEach(ship => {
@@ -31,12 +33,14 @@ function gameBoard(){return {
                     ship.hit(coord);
                     ship.isSunk();
                     this.boardMap[coord[0]][coord[1]] = 3;
+                    result =3
                 }    
 
                 });
                 })
                 
             };
+            return result
         },
     isSunkAll(){
         let sunk = true
@@ -51,4 +55,4 @@ function gameBoard(){return {
 
 
 
-module.exports = gameBoard
+export { gameBoard }

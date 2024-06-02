@@ -6,7 +6,7 @@ body{
     background-color: beige;
 }
 
-.container {
+.container, .container3, .container4 {
     display: grid;
     grid-template-columns: repeat(10, 30px);
     grid-template-rows: repeat(10, 30px);
