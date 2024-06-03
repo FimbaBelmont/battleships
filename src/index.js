@@ -1,92 +1,68 @@
-// const ship = require("./ships");
-// const gameBoard = require("./gameBoard");
-// const Player = require("./players");
-// const stylesheet = require("./stylesheet.css");
-// const render = require("./gameRender.js");
-// const renderGameBoard = require("./gameRender.js");
 
 import { Ship } from "./ships.js";
 import {gameBoard} from "./gameBoard.js";
-import { Player } from "./players.js";
 import "./stylesheet.css";
+import { aiGameStart, playerGameStart } from "./gameStart.js"; 
 import { renderGameBoard } from "./gameRender.js";
+import { currentPlayers } from "./gameStart.js";
 
+//Main Menu
+const aiStartBtt = document.querySelector("#aiGame");
+const humanStartBtt = document.querySelector("#humanGame");
+const creditsBtt = document.querySelector("#credits");
 
-const container = document.querySelector(".container");
-const container2 = document.querySelector(".container2");
+aiStartBtt.addEventListener("click", ()=>{
+    aiGameStart();
+})
 
-//Game Menu
-
-
-function aiGameStart(){
-const player1 = Player();
-let cord = [[1,1],[1,2],[1,3]];
-let cord2 = [[2,1],[2,2],[2,3]];
-let cord3 = [[7,1],[6,1]];
-player1.board.placeShip(cord);
-player1.board.placeShip(cord2);
-player1.board.placeShip(cord3);
-const player2 = Player();
-player2.board.placeShip(cord);
-player2.board.placeShip(cord3);
-player1.turn = true;
-renderGameBoard(player1, player2, container, container2);
-    
-}
-
-function aiTakeTurn(player, humanPlayer){
-    while(player.turn === true) {
-        if(!((player.possibleTurns.length) === 0)){
-            let pt= player.possibleTurns.shift();
-            if(!(player.takenTurns.includes((pt[0]*10+pt[1])))){
-                let sHit = humanPlayer.board.receiveAttack(pt);
-                if(sHit ===3 ){ player.possibleTurns.push([pt[0]+1, pt[1]]);
-                    //make sure both coordinates are bigger than -1 and less than 10
-                    player.possibleTurns.push([pt[0]+1, pt[1]+1]);
-                    player.possibleTurns.push([pt[0]-1, pt[1]]);
-                    player.possibleTurns.push([pt[0]-1, pt[1]-1])}
-                player.takenTurns.push(pt);
-                player.turn = false;
-                humanPlayer.turn = true;
-                console.log(pt);
-                renderGameBoard(humanPlayer, player, container, container2);
-        }else {aiTakeTurn(player,humanPlayer)}}
-        else {
-        let randomFirst = Math.floor(Math.random()*10);
-        let randomSecond = Math.floor(Math.random()*10);
-        if(!(player.takenTurns.includes((randomFirst*10)+randomSecond))){
-            let hit = humanPlayer.board.receiveAttack([randomFirst, randomSecond]);
-            if (hit === 3){ player.possibleTurns.push([randomFirst+1, randomSecond]);
-                player.possibleTurns.push([randomFirst+1, randomSecond+1]);
-              player.possibleTurns.push([randomFirst-1, randomSecond]);
-               player.possibleTurns.push([randomFirst-1, randomSecond-1]);
-            }
-            player.takenTurns.push((randomFirst*10)+randomSecond);
-            player.turn = false;
-            humanPlayer.turn = true;
-            console.log(randomFirst, randomSecond)
-            renderGameBoard(humanPlayer, player, container, container2);
-        }
-            else {aiTakeTurn(player,humanPlayer)}
-        }
-        }        }
-        
+humanStartBtt.addEventListener("click", ()=>{
+    playerGameStart();
+})
 
 
 
-const container3 = document.querySelector(".container3");
-const container4 = document.querySelector(".container4");
+// Passing the screen implementation
+const passButton = document.querySelector(".pass");
+const turnStart = document.querySelector(".passScreen");
+const gameScreen = document.querySelector(".screen");
+const hideBtt = document.querySelector(".hideBtt");
 
 
-aiGameStart()
-export { aiTakeTurn }
+// document.addEventListener("keyup", event=>{
+//     if(event.code=== "Space"){
+//     if(passButton.classList.contains("show")){
+//     gameScreen.classList.toggle("hide");
+//     turnStart.classList.toggle("hide")}
+// }
+// })
 
+//Make sure the player has played their turn 
+//Keep the track of which screen is showing so that i can change it 
 
+passButton.addEventListener("click", ()=>{
+    gameScreen.classList.toggle("hide");
+    turnStart.classList.toggle("hide");
+})
+
+turnStart.addEventListener("click", ()=>{
+    gameScreen.classList.toggle("hide");
+    turnStart.classList.toggle("hide");
+    if(currentPlayers[0].turn) {renderGameBoard(currentPlayers[0],currentPlayers[1],false)}
+    else if(currentPlayers[1].turn) { renderGameBoard(currentPlayers[1], currentPlayers[0], false)}
+    //if the last turn played is player1 => render for player2
+    //else if the last turn played is player2 =>render for player1
+})
+
+hideBtt.addEventListener("click", ()=>{
+    const playerBoard = document.querySelector(".container2");
+        playerBoard.classList.toggle("hide")
+})
 //TODO
-//write a game state logic so that players take turns,
-//write enemy ai >it should randomly put ships and understand that it hit an enemy ship and try adjacent squares
 //implement drag and drop for ships
-//implement a menu so that you can choose between 2-player or an enemy ai
+//ships also have to be rotatable
+//implement a way so that ai can put ships
+//Implement the win condition
+//Implement a win screen
 
 
 

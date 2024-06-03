@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <div>Enemy Gameboard</div>
-    <div class="container"></div>
-    <div>Your Gameboard</div>
-    <div class="container2"></div>
-    <br><br><br>
-    <div>PLAYER 2 ENEMY GAMEBOARD</div>
-    <div class="container3"></div>
-    <div>PLAYER 2' BOARD</div>
-    <div class="container4"></div>
-</body>
+  </head>
+  <body>
+    <div class="menuScreen">
+        <div class="mainMenu">
+          <button id="aiGame">PLAY AGAINST THE COMPUTER</button>
+          <button id="humanGame">PLAY WITH A FRIEND</button>
+          <button id="credits">CREDITS</button>
+        </div>
+    </div>
+    <button class="passScreen hide">Start the turn</button>
+    <div class="screen hide">
+        <div class="gameScreen">
+            <div>Enemy Gameboard</div>
+            <div class="container"></div>
+            <button class="pass">Pass the screen</button>
+          <div>Your Gameboard</div>
+          <button class="hideBtt">Show/Hide</button>
+          <div class="container2"></div>
+    </div>
+    </div>
+  </body>
 </html>
