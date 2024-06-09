@@ -1,5 +1,6 @@
 import { Player } from "./players.js";
 import { renderGameBoard } from "./gameRender.js";
+import { renderShips } from "./renderShips.js";
 
 function aiGameStart() {
   //Starts the game with computer
@@ -64,6 +65,7 @@ function playerGameStart() {
   document.querySelector(".menuScreen").classList.add("hide");
   document.querySelector(".screen").classList.remove("hide");
   renderGameBoard(player1, player2, false);
+  renderShips(player1);
 }
 
 export { aiGameStart, playerGameStart, currentPlayers }

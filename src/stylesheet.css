@@ -4,6 +4,8 @@ body{
     flex-direction: column; 
     align-items: center;
     background-color: beige;
+    height: 100vh;
+    width: 100vw;
 }
 
 .mainMenu {
@@ -28,7 +30,15 @@ body{
     display:none
 } */
 
-.container, .container3, .container4 {
+.gameScreen {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 8fr 1fr 1fr 8fr;
+    justify-items: center;
+    align-items: start;
+}
+
+.container, .shipPlacementContainer {
     display: grid;
     grid-template-columns: repeat(10, 30px);
     grid-template-rows: repeat(10, 30px);
@@ -41,6 +51,7 @@ body{
 .sqr{ 
     padding: 10px;
     border: 3px solid black;
+    position: relative;
 }
 
 .notHit{
@@ -71,4 +82,52 @@ body{
 
 .hide {
     display:none;
+}
+
+.shipContainer{
+    grid-area: 1/2/5/3;
+    align-self: center;
+    text-align: center;
+}
+
+.pass {
+    position: absolute;
+    top: -70px;
+    left: 0px;
+    font-size: 24px;
+    background-color: #777777;
+    color: aliceblue;
+}
+
+.hideBtt {
+    position: absolute;
+    left: 135px;
+    top: -5px;
+}
+
+.enemy {
+    grid-area: 1/1/2/2;
+}
+
+.player {
+    position: relative;
+    grid-area: 4/1/5/2;
+
+}
+
+.menuScreen { 
+    display : none;
+}
+
+.shipPlaceScreen { 
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    
+}
+
+.sqr img {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    z-index: 1;
 }

@@ -5,6 +5,8 @@ import "./stylesheet.css";
 import { aiGameStart, playerGameStart } from "./gameStart.js"; 
 import { renderGameBoard } from "./gameRender.js";
 import { currentPlayers } from "./gameStart.js";
+import { Player } from "./players.js";
+import { renderShips, renderPlacementContainer } from "./renderShips.js";
 
 //Main Menu
 const aiStartBtt = document.querySelector("#aiGame");
@@ -26,6 +28,8 @@ const passButton = document.querySelector(".pass");
 const turnStart = document.querySelector(".passScreen");
 const gameScreen = document.querySelector(".screen");
 const hideBtt = document.querySelector(".hideBtt");
+
+
 
 
 // document.addEventListener("keyup", event=>{
@@ -57,9 +61,14 @@ hideBtt.addEventListener("click", ()=>{
     const playerBoard = document.querySelector(".container2");
         playerBoard.classList.toggle("hide")
 })
+
+const testPlayer = Player();
+renderPlacementContainer(testPlayer);
+renderShips(testPlayer);
 //TODO
 //implement drag and drop for ships
-//ships also have to be rotatable
+    //there should be a confirm button
+    //implement a button so i can change the index
 //implement a way so that ai can put ships
 //Implement the win condition
 //Implement a win screen
