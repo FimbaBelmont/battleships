@@ -11,6 +11,7 @@ import { renderShips, renderPlacementContainer } from "./renderShips.js";
 //Main Menu
 const aiStartBtt = document.querySelector("#aiGame");
 const humanStartBtt = document.querySelector("#humanGame");
+//take the game to ship selection
 const creditsBtt = document.querySelector("#credits");
 
 aiStartBtt.addEventListener("click", ()=>{
@@ -21,7 +22,12 @@ humanStartBtt.addEventListener("click", ()=>{
     playerGameStart();
 })
 
+//Confirm ship selection
+const confirmBtt = document.querySelector(".confirmSelect");
 
+confirmBtt.addEventListener("click", ()=>{
+
+})
 
 // Passing the screen implementation
 const passButton = document.querySelector(".pass");
@@ -40,7 +46,7 @@ const hideBtt = document.querySelector(".hideBtt");
 // }
 // })
 
-//Make sure the player has played their turn 
+//Make sure the player has played their turn
 //Keep the track of which screen is showing so that i can change it 
 
 passButton.addEventListener("click", ()=>{
@@ -62,16 +68,14 @@ hideBtt.addEventListener("click", ()=>{
         playerBoard.classList.toggle("hide")
 })
 
-const testPlayer = Player();
-renderPlacementContainer(testPlayer);
-renderShips(testPlayer);
 //TODO
-//implement drag and drop for ships
-    //there should be a confirm button
-    //implement a button so i can change the index
+//there should be a confirm button for ship selection
 //implement a way so that ai can put ships
+//currently ship selection screen and the actual game screen looks way different // implement the ship selection screen look to the actual game screen with ships being rendered as they are in selection screen
+    // Implementing the ship selection screen look to the actual game will break how the hits are being rendered // find a different way to render it
 //Implement the win condition
 //Implement a win screen
 
+//implement a button so i can change the index  
 
 
