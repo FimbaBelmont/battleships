@@ -7,6 +7,7 @@ import { renderGameBoard } from "./gameRender.js";
 import { currentPlayers } from "./gameStart.js";
 import { Player } from "./players.js";
 import { renderShips, renderPlacementContainer } from "./renderShips.js";
+import { aiPlaceShips } from "./computerTakeTurn.js";
 
 //Main Menu
 const aiStartBtt = document.querySelector("#aiGame");
@@ -68,14 +69,14 @@ hideBtt.addEventListener("click", ()=>{
         playerBoard.classList.toggle("hide")
 })
 
+
 //TODO
-//there should be a confirm button for ship selection
-//implement a way so that ai can put ships
-//currently ship selection screen and the actual game screen looks way different // implement the ship selection screen look to the actual game screen with ships being rendered as they are in selection screen
-    // Implementing the ship selection screen look to the actual game will break how the hits are being rendered // find a different way to render it
+//FIX THE 2-PLAYER GAME
 //Implement the win condition
 //Implement a win screen
 
+//currently ship selection screen and the actual game screen looks way different // implement the ship selection screen look to the actual game screen with ships being rendered as they are in selection screen
+// Implementing the ship selection screen look to the actual game will break how the hits are being rendered // find a different way to render it
 //implement a button so i can change the index  
 
 

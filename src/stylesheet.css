@@ -166,8 +166,15 @@ button:active {
 
 .shipContainer {
     grid-area: 1/2/5/3;
-    align-self: center;
+    align-self: end;
     text-align: center;
+}
+.shipContainer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-items: baseline;
 }
 
 .pass {

@@ -16,6 +16,7 @@ let placedShipLength = 0;
 let placedCoords = [];
 
 function renderShips(player) {
+  ships.innerHTML = "";
   player.shipsToPlace.forEach((ele, idx) => {
     const shipImg = document.createElement("img");
     shipImg.src = img;
@@ -40,8 +41,10 @@ function renderShips(player) {
   };
 
 
+let shipsCoordinates = {};
 function renderPlacementContainer(player) {
-  const shipsCoordinates = {};
+  document.querySelector(".shipPlacementContainer").innerHTML = "";
+  shipsCoordinates = {};
   player.board.boardMap.forEach((row, rowIdx) => {
     row.forEach((element, idx) => {
       let allySqr = document.createElement("div");
@@ -65,7 +68,7 @@ function renderPlacementContainer(player) {
   
                result = false}
               }
-           }             
+           }
            return result}
         
           if (checkLegal(e))
@@ -76,7 +79,7 @@ function renderPlacementContainer(player) {
         const axis = e.dataTransfer.getData("class");
         e.target.appendChild(document.querySelector(`#${data}`));
         shipsCoordinates[`${data}`] = [
-          rowIdx * 10 + idx,
+          [rowIdx,idx],
           placedShipLength,
           axis,
         ];
@@ -134,6 +137,11 @@ function renderPlacementContainer(player) {
             draggable:"true"; 
             top: -6px;
             left: -3px`);
+            shipsCoordinates[`${data}`] = [
+              [rowIdx,idx],
+              placedShipLength,
+              `yAxis`,
+            ];
           } else if (shipsCoordinates[data][2]==="yAxis") {
             e.target.classList.add("xAxis");
             e.target.classList.remove("yAxis");
@@ -145,7 +153,13 @@ function renderPlacementContainer(player) {
             draggable:"true"; 
             top: -3px;
             left: -3px`);
+            shipsCoordinates[`${data}`] = [
+              [rowIdx,idx],
+              placedShipLength,
+              "xAxis",
+            ];
           }
+          
           placedCoords = coordCalc(shipsCoordinates);
 
         }})
@@ -170,6 +184,6 @@ function renderPlacementContainer(player) {
   });
 }
 
-export { renderShips, renderPlacementContainer };
+export { renderShips, renderPlacementContainer, shipsCoordinates };
 
 //also add a button to change the placement of the ship
