@@ -45,10 +45,10 @@ function gameBoard(){return {
     isSunkAll(){
         let sunk = true
         this.shipsInfo.forEach(element=> {
-            if(element.sunk === false)
-                sunk = false;
+            if(element.sunk === false){
+                sunk = false;}
         });
-        return sunk
+        return sunk;
     }
     }
     }

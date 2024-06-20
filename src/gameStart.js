@@ -75,7 +75,9 @@ let currentPlayers = [];
 function playerGameStart() {
   //Start 2-player game
   const player1= Player();
+  player1.playerName = "Player 1";
   const player2=Player();
+  player2.playerName = "Player 2";
   
   document.querySelector(".menuScreen").classList.add("hide");
   document.querySelector(".shipPlaceScreen").classList.remove("hide");
@@ -92,8 +94,7 @@ function playerGameStart() {
     //Store player1 ship info //if this has 10 length =>
     //render player2 ships
     //render player2 ship placement screen
-    if (player1HasSelected === false && Object.keys(shipsCoordinates).length === 1){
-      console.log("player 1 has selected");
+    if (player1HasSelected === false && Object.keys(shipsCoordinates).length === 10){
       let player1ShipInfo = JSON.parse(JSON.stringify(shipsCoordinates));
       for (let ele in player1ShipInfo){
         let ship1Coord = []; 
@@ -109,16 +110,14 @@ function playerGameStart() {
           player1.board.placeShip(ship1Coord);
       }
       player1HasSelected = true;
-    }
-    if(player1HasSelected === true){
       renderShips(player2);
       renderPlacementContainer(player2);
+    }
+    if(player1HasSelected === true){
       let player2ShipInfo = shipsCoordinates;
-      console.log("IT IS HERE");
-    if(Object.keys(player2ShipInfo).length === 1)
+    if(Object.keys(player2ShipInfo).length === 10)
     {
 
-      console.log("AND NOW HERE");
       for (let ele in player2ShipInfo){
         let ship2Coord = []; 
         if(player2ShipInfo[ele][2]==="xAxis"){
@@ -140,6 +139,7 @@ function playerGameStart() {
         document.querySelector(".screen").classList.remove("hide");
         document.querySelector(".shipPlaceScreen").classList.add("hide");
         renderGameBoard(player1, player2, false);
+        document.querySelector(".turnTag").textContent = `Player 1's Turn`;
         player1.turn = true;
         currentPlayers.push(player1, player2);
       }

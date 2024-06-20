@@ -121,7 +121,7 @@ function renderPlacementContainer(player) {
               result = false}
              }
           }
-          if(result === false) console.log("IT ISNT LEGAL")
+          if(result === false)
           return result
           }
     

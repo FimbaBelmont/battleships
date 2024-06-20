@@ -42,18 +42,32 @@ function renderGameBoard(
           player2.board.receiveAttack([rowIdx, idx]);
           renderGameBoard(player, player2,true);
           player.turn = false;
+          if(player2.board.isSunkAll()) {
+            document.querySelector(".winnerName").textContent = "You Win !";
+            document.querySelector(".screen").classList.add("hide");
+            document.querySelector(".winScreen").classList.remove("hide");
+          }
           player2.turn = true;
           console.log("human plays");
-          aiTakeTurn(player2, player)}}
+          aiTakeTurn(player2, player)
+          if(player.board.isSunkAll()) {
+            document.querySelector(".winnerName").textContent = "Computer Wins !";
+            document.querySelector(".screen").classList.add("hide");
+            document.querySelector(".winScreen").classList.remove("hide");
+          }
+        }}
 
           else if(aiGame === false){
           if (player.turn) {
           player2.board.receiveAttack([rowIdx, idx]);
           renderGameBoard(player, player2,false);
           player.turn = false;
-          player2.turn = true;
-          console.log("human plays")}
-          //CHANGE SOME TEXT CONTENT TO IT'S THE PLAYER2'S TURN
+          if(player2.board.isSunkAll()) {
+            document.querySelector(".winnerName").textContent = `${player.playerName} Wins !`
+            document.querySelector(".screen").classList.add("hide");
+            document.querySelector(".winScreen").classList.remove("hide");
+          }
+          player2.turn = true}
         }
       });
       switch (element) {

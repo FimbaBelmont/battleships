@@ -6,6 +6,8 @@ body {
   background-color: beige;
   height: 100vh;
   width: 100vw;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 button {
@@ -51,6 +53,8 @@ button:active {
   font-size: 25px;
   line-height: 30px;
   padding: 13px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   border-radius: 8px;
   font-family: Georgia, serif;
   font-weight: 900;
@@ -66,7 +70,9 @@ button:active {
   );
   box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
   border: 2px outset rgb(121, 73, 0);
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mainMenu button:hover {
   background: #ff9900;
@@ -181,15 +187,21 @@ button:active {
     position: absolute;
     top: -70px;
     left: 0px;
-    font-size: 24px;
+    font-size: 16px;
   background-color: #777777;
   color: aliceblue;
+  line-height: 16px;
+  padding: 10px;
+  padding-top: 5px;
+
 }
 
 .hideBtt {
-    position: absolute;
-    left: 135px;
-    top: -5px;
+  position: absolute;
+  right: -111px;
+  top: 16px;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .enemy {
@@ -212,4 +224,18 @@ button:active {
 }
 .hide {
   display: none;
+}
+
+.winContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: darkorange;
+  padding: 100px;
+  border-radius: 40px;
+  color: white;
+  text-shadow: black 3px 1px;
+  font-size: 36px;
+  font-weight: 900;
 }

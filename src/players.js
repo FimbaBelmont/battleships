@@ -9,6 +9,7 @@ function Player() { return {
     board : gameBoard(),
     turn : false,
     takenTurns : [],
+    playerName : "",
     possibleTurns : [],
 }};
 
